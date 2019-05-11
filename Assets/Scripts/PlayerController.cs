@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Slider bulletBar;
     public Rigidbody rb;
     public float speed;
     public Transform Canon;
@@ -15,15 +17,23 @@ public class PlayerController : MonoBehaviour
     public Interactive buttonUp;
     public Interactive buttonFire;
 
+    public int maxBullets;
+    private int currentBullet;
+    public int timeReload;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        bulletBar.maxValue = maxBullets;
+        bulletBar.minValue = 0;
+        currentBullet = maxBullets;
     }
 
     void Update()
     {
         float directionX;
+
+        
 
         if (buttonLeft.pulsado)
         {
@@ -58,25 +68,42 @@ public class PlayerController : MonoBehaviour
         Vector3 DirectionX = directionX * Vector3.right;
         Vector3 DirectionZ = directionY * Vector3.forward;
 
-        DirectionZ = Input.GetAxis("Vertical") * Vector3.forward;
+        
 
         Vector3 Direction = DirectionX + DirectionZ;
         Vector3 VectorVelocity = Direction * speed;
 
         rb.velocity = VectorVelocity;
 
+        bulletBar.value = currentBullet;
+
         if (buttonFire.pulsado)
         {
-            Instantiate(bullet, Canon.position, bullet.transform.rotation);
+          
+
+            if (currentBullet <= 0)
+            {
+                StartCoroutine(reloadBullets());
+            }
+            else
+            {
+                Instantiate(bullet, Canon.position, bullet.transform.rotation);
+                currentBullet--;
+            }
         }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            Instantiate(bullet, Canon.position, bullet.transform.rotation);
-
-        }
 
     }
 
+
+    public IEnumerator reloadBullets()
+    {
+        yield return new WaitForSeconds(timeReload);
+
+            currentBullet = maxBullets;
+     
+    }
+
+    
    
 }

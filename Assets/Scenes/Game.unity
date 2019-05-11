@@ -419,6 +419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartJ1
       objectReference: {fileID: 0}
+    - target: {fileID: 1662047234269174653, guid: a19c6dfb9aa5eac46bbd18cf8af97568,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1662047234269174594, guid: a19c6dfb9aa5eac46bbd18cf8af97568,
         type: 3}
       propertyPath: m_LocalPosition.x
