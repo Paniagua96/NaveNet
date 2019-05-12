@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public Slider bulletBar;
     public Rigidbody rb;
     public float speed;
+    public float BulletSpeed;
     public Transform Canon;
     public GameObject bullet;
     public Interactive buttonLeft;
@@ -68,8 +70,6 @@ public class PlayerController : MonoBehaviour
         Vector3 DirectionX = directionX * Vector3.right;
         Vector3 DirectionZ = directionY * Vector3.forward;
 
-        
-
         Vector3 Direction = DirectionX + DirectionZ;
         Vector3 VectorVelocity = Direction * speed;
 
@@ -79,20 +79,26 @@ public class PlayerController : MonoBehaviour
 
         if (buttonFire.pulsado)
         {
-          
-
-            if (currentBullet <= 0)
-            {
-                StartCoroutine(reloadBullets());
-            }
-            else
-            {
-                Instantiate(bullet, Canon.position, bullet.transform.rotation);
-                currentBullet--;
-            }
+            CmdCrearBala();
         }
 
 
+    }
+
+    [Command]
+    void CmdCrearBala()
+    {
+        if (currentBullet <= 0)
+        {
+            StartCoroutine(reloadBullets());
+        }
+        else
+        {
+            GameObject Bala = (GameObject) Instantiate(bullet, Canon.position, bullet.transform.rotation);
+            //Bala.GetComponent<Rigidbody>().velocity = Bala.transform.up * BulletSpeed;
+            NetworkServer.Spawn(Bala);
+            currentBullet--;
+        }
     }
 
 
