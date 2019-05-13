@@ -5,7 +5,7 @@ using UnityEngine.Android;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController_J1 : NetworkBehaviour
 {
     public Slider bulletBar;
     public Rigidbody rb;
