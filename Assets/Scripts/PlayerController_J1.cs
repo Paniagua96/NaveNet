@@ -10,7 +10,6 @@ public class PlayerController_J1 : NetworkBehaviour
     public Slider bulletBar;
     public Rigidbody rb;
     public float speed;
-    public float BulletSpeed;
     public Transform Canon;
     public GameObject bullet;
     public Interactive buttonLeft;

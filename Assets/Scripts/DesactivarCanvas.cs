@@ -6,32 +6,50 @@ using UnityEngine.Networking;
 
 public class DesactivarCanvas : NetworkBehaviour
 {
+    private GameObject _Canvas_Jugador;
     public GameObject _Canvas_Jugador1;
-    public GameObject CamaraDeJugador;
+    public GameObject _Canvas_Jugador2;
+    public GameObject CamJ1;
+    public GameObject Cam;
     private GameObject ParentCamera;
     void Start()
     {
         ParentCamera = GameObject.Find("CameraParent");
-
+        /*
         if (isServer)
         {
             this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
+            _Canvas_Jugador = _Canvas_Jugador1;
         }
         if (isClient && this.gameObject.GetComponent<PlayerController_J1>().enabled == false)
         {
-            Debug.Log("Cliente");
             this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
+            CamaraDeJugador = _Canvas_Jugador2;
+            CamaraDeJugador.SetActive(true);
+        }*/
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Colicion_J1")
+        {
+            if (isLocalPlayer)
+            {
+                this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
+                //_Canvas_Jugador = _Canvas_Jugador1;
+                _Canvas_Jugador1.SetActive(true);
+                Debug.Log("Activate Control De Jugador 1");
+            }
         }
 
-        if (isLocalPlayer)
-        {
-            _Canvas_Jugador1.active = true;
-            CamaraDeJugador.active = true;
-        }
         else
         {
-            _Canvas_Jugador1.active = false;
-            CamaraDeJugador.active = false;
+            if (isLocalPlayer)
+            {
+                this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
+                //CamaraDeJugador = _Canvas_Jugador2;
+                _Canvas_Jugador2.SetActive(true);
+                Debug.Log("Activate Control De Jugador 2");
+            }
         }
     }
 }
