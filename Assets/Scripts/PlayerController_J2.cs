@@ -22,6 +22,22 @@ public class PlayerController_J2 : NetworkBehaviour
     private int currentBullet;
     public int timeReload;
 
+
+    [SyncVar(hook = "OnChangeGameOver")]
+    public bool gameOver;
+
+    void OnChangeGameOver(bool _gameOver)
+    {
+        gameOver = _gameOver;
+    }
+
+    [Command]
+    public void CmdChangeGameOver()
+    {
+        gameOver = true;
+    }
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();

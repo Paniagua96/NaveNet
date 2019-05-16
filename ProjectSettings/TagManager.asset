@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CamJ1
   - Destroyer
+  - Cliente
+  - Servidor
   layers:
   - Default
   - TransparentFX

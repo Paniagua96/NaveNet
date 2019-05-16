@@ -247,7 +247,6 @@ GameObject:
   - component: {fileID: 3215030079249645000}
   - component: {fileID: 5978756552775885301}
   - component: {fileID: 3664329707889548122}
-  - component: {fileID: 5088727101075265035}
   m_Layer: 0
   m_Name: Camara_Jugador_2
   m_TagString: Untagged
@@ -319,19 +318,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584712624150331036}
   m_Enabled: 1
---- !u!114 &5088727101075265035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584712624150331036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88b4d57f2d35bd4a884a7844bb3f246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EstaCam: {fileID: 1584712624150331036}
 --- !u!1 &1764813264560466475
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +838,6 @@ GameObject:
   - component: {fileID: 451746764815534481}
   - component: {fileID: 3535563445740206015}
   - component: {fileID: 7006752536450199161}
-  - component: {fileID: 5424789006478848133}
   m_Layer: 0
   m_Name: Camara_Jugador_1
   m_TagString: Untagged
@@ -924,19 +909,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2599156116597017566}
   m_Enabled: 1
---- !u!114 &5424789006478848133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2599156116597017566}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88b4d57f2d35bd4a884a7844bb3f246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EstaCam: {fileID: 2599156116597017566}
 --- !u!1 &2910401691103299240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2308,7 @@ MonoBehaviour:
   buttonFire: {fileID: 110761076149489064}
   maxBullets: 1
   timeReload: 2
+  gameOver: 0
 --- !u!114 &4954825602797008498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,8 +2323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Canvas_Jugador1: {fileID: 2595401923293772451}
   _Canvas_Jugador2: {fileID: 4781625278445712098}
-  CamJ1: {fileID: 0}
-  Cam: {fileID: 0}
 --- !u!114 &7358874639700352376
 MonoBehaviour:
   m_ObjectHideFlags: 0

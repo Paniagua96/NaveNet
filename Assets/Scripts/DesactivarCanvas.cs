@@ -9,24 +9,21 @@ public class DesactivarCanvas : NetworkBehaviour
     private GameObject _Canvas_Jugador;
     public GameObject _Canvas_Jugador1;
     public GameObject _Canvas_Jugador2;
-    public GameObject CamJ1;
-    public GameObject Cam;
     private GameObject ParentCamera;
     void Start()
     {
-        ParentCamera = GameObject.Find("CameraParent");
-        /*
-        if (isServer)
+        
+
+        if (isLocalPlayer)
         {
-            this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
-            _Canvas_Jugador = _Canvas_Jugador1;
+            this.transform.gameObject.tag = "Cliente";
         }
-        if (isClient && this.gameObject.GetComponent<PlayerController_J1>().enabled == false)
+        else
         {
-            this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
-            CamaraDeJugador = _Canvas_Jugador2;
-            CamaraDeJugador.SetActive(true);
-        }*/
+            this.transform.gameObject.tag = "Servidor";
+        }
+
+        ParentCamera = GameObject.Find("CameraParent");
     }
     void OnTriggerEnter(Collider other)
     {
