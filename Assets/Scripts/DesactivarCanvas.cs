@@ -35,6 +35,7 @@ public class DesactivarCanvas : NetworkBehaviour
             if (isLocalPlayer)
             {
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
+                this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
                 //_Canvas_Jugador = _Canvas_Jugador1;
                 _Canvas_Jugador1.SetActive(true);
                 _Canvas_Jugador2.SetActive(false);
@@ -42,11 +43,12 @@ public class DesactivarCanvas : NetworkBehaviour
             }
         }
 
-        else
+        else if(other.gameObject.name == "Colicion_J2")
         {
             if (isLocalPlayer)
             {
                 this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
+                this.gameObject.GetComponent<PlayerController_J1>().enabled = false;
                 //CamaraDeJugador = _Canvas_Jugador2;
                 _Canvas_Jugador2.SetActive(true);
                 _Canvas_Jugador1.SetActive(false);
@@ -54,4 +56,28 @@ public class DesactivarCanvas : NetworkBehaviour
             }
         }
     }
+
+    //void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.name == "Colicion_J1")
+    //    {
+    //        if (isLocalPlayer)
+    //        {
+    //            this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
+    //            this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
+    //            //_Canvas_Jugador = _Canvas_Jugador1;
+    //        }
+    //    }
+
+    //    else if (other.gameObject.name == "Colicion_J1")
+    //    {
+    //        if (isLocalPlayer)
+    //        {
+    //            this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
+    //            this.gameObject.GetComponent<PlayerController_J1>().enabled = false;
+    //            //CamaraDeJugador = _Canvas_Jugador2;
+    //        }
+    //    }
+    //}
+
 }
