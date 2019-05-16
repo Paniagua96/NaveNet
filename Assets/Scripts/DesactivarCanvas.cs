@@ -37,6 +37,7 @@ public class DesactivarCanvas : NetworkBehaviour
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
                 //_Canvas_Jugador = _Canvas_Jugador1;
                 _Canvas_Jugador1.SetActive(true);
+                _Canvas_Jugador2.SetActive(false);
                 Debug.Log("Activate Control De Jugador 1");
             }
         }
@@ -48,6 +49,7 @@ public class DesactivarCanvas : NetworkBehaviour
                 this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
                 //CamaraDeJugador = _Canvas_Jugador2;
                 _Canvas_Jugador2.SetActive(true);
+                _Canvas_Jugador1.SetActive(false);
                 Debug.Log("Activate Control De Jugador 2");
             }
         }

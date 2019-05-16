@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class SingletonShip
 {
-    public static int ship = 2;
+    public static int ship = 1;
 }

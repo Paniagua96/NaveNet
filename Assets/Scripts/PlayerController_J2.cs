@@ -100,6 +100,7 @@ public class PlayerController_J2 : NetworkBehaviour
     {
         if (other.gameObject.CompareTag("Bala"))
         {
+            Destroy(other.gameObject);
             currentHealth--;
             if (currentHealth <= 0)
             {
