@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed=20;
+    public float speed = 20;
 
 
     void Start()
     {
-        Destroy(gameObject,3);
+        Destroy(gameObject, 3);
     }
 
     void Update()
@@ -18,4 +18,11 @@ public class Bullet : MonoBehaviour
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Destroyer")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

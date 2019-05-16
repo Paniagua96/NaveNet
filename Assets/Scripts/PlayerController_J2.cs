@@ -11,7 +11,6 @@ public class PlayerController_J2 : NetworkBehaviour
     public Slider healthBar;
     public Rigidbody rb;
     public float speed;
-    public float BulletSpeed;
     public Transform Canon;
     public GameObject bullet;
     public Interactive buttonLeft;
