@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class PlayerController_J1 : NetworkBehaviour
 {
     public Slider bulletBar;
+    public Slider healthBar;
     public Rigidbody rb;
     public float speed;
     public Transform Canon;
@@ -18,16 +20,26 @@ public class PlayerController_J1 : NetworkBehaviour
     public Interactive buttonUp;
     public Interactive buttonFire;
 
+    public int maxHealth;
     public int maxBullets;
     private int currentBullet;
+    public int currentHealth;
     public int timeReload;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        //Set health
+        healthBar.maxValue = maxHealth;
+        healthBar.minValue = 0;
+        currentHealth = maxHealth;
+
+        //Set Bullets
         bulletBar.maxValue = maxBullets;
         bulletBar.minValue = 0;
         currentBullet = maxBullets;
+
     }
 
     void Update()
@@ -74,6 +86,7 @@ public class PlayerController_J1 : NetworkBehaviour
 
         rb.velocity = VectorVelocity;
 
+        healthBar.value = currentHealth;
         bulletBar.value = currentBullet;
 
         if (buttonFire.pulsado)
@@ -82,6 +95,20 @@ public class PlayerController_J1 : NetworkBehaviour
         }
 
 
+    }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Bala"))
+        {
+            Destroy(other.gameObject);
+            currentHealth--;
+            if (currentHealth <= 0)
+            {
+                //Put here what happend if health=0
+                currentHealth = 0;
+            }
+        }
     }
 
     [Command]

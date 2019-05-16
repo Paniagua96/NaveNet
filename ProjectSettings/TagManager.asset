@@ -8,6 +8,7 @@ TagManager:
   - Destroyer
   - Cliente
   - Servidor
+  - Bala
   layers:
   - Default
   - TransparentFX

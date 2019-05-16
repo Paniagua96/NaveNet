@@ -6,17 +6,18 @@ using UnityEngine.Networking;
 
 public class DesenparentarCamara : NetworkBehaviour
 {
-    public GameObject EstaCam;
+    public GameObject player;
     void Start()
     {
-        this.transform.parent = null;
-        if (isLocalPlayer)
+
+    }
+
+    void Update()
+    {
+        if (player == null)
         {
-            EstaCam.SetActive(false);
-        }
-        else
-        {
-            EstaCam.SetActive(false);
+            Debug.Log("destory");
+            Destroy(gameObject);
         }
     }
 }

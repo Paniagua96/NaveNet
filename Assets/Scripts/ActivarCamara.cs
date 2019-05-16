@@ -12,6 +12,7 @@ public class ActivarCamara : MonoBehaviour
     void Start()
     {
         Cam.SetActive(true);
+        Cam.GetComponent<DesenparentarCamara>().player = gameObject.transform.parent.gameObject;
         Cam.transform.parent = null;
         Cam.transform.position = PocicionDeCam;
         Cam.transform.Rotate(RotacionDeCam);
