@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 public class PlayerController_J1 : NetworkBehaviour
 {
     public Slider bulletBar;
-    public Slider healthBar;
+    //public Slider healthBar;
     public Rigidbody rb;
     public float speed;
     public Transform Canon;
@@ -31,8 +31,8 @@ public class PlayerController_J1 : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
 
         //Set health
-        healthBar.maxValue = maxHealth;
-        healthBar.minValue = 0;
+        //healthBar.maxValue = maxHealth;
+        //healthBar.minValue = 0;
         currentHealth = maxHealth;
 
         //Set Bullets
@@ -86,7 +86,7 @@ public class PlayerController_J1 : NetworkBehaviour
 
         rb.velocity = VectorVelocity;
 
-        healthBar.value = currentHealth;
+        //healthBar.value = currentHealth;
         bulletBar.value = currentBullet;
 
         if (buttonFire.pulsado)
