@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/__DELETED_GUID_Trash/bc18cb7d122d0534c91ed7b9158f5cfa
     guid: bc18cb7d122d0534c91ed7b9158f5cfa
   - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: bf5ba8dffbead3c43951fff5ce2d4239
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: d4726bc3cac2ac649868aadce7748a88
   m_configObjects: {}

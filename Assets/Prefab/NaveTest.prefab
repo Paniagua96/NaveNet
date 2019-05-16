@@ -2188,9 +2188,10 @@ GameObject:
   - component: {fileID: 4954825602797008498}
   - component: {fileID: 7358874639700352376}
   - component: {fileID: 4625082940521897566}
+  - component: {fileID: 3433387994644651096}
   m_Layer: 0
   m_Name: NaveTest
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2229,7 +2230,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7034702352617715297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2407,6 +2408,22 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &3433387994644651096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034702352617715297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5119dfd8c262a4196030e83e30b6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship1: {fileID: 1380680800, guid: 72296af9c9ce97342873cfe0fdc3c8a1, type: 3}
+  ship2: {fileID: 1773225393, guid: 756bfae44f6fd234ca1434472fc6b4ec, type: 3}
+  ship3: {fileID: 1520583203, guid: 8a54facd06a07b3408f33f4c08b4ae38, type: 3}
+  finalShip: {fileID: 0}
 --- !u!1 &7136346313781699942
 GameObject:
   m_ObjectHideFlags: 0

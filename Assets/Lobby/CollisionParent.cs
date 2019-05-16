@@ -6,7 +6,7 @@ public class CollisionParent : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.GetComponent<DesactivarCanvas>())
         {
             Debug.Log("entro");
             //Jugador.transform.parent = PlataformaMov.transform;
