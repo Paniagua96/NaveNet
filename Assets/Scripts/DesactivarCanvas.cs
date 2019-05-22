@@ -37,6 +37,7 @@ public class DesactivarCanvas : NetworkBehaviour
                 _Canvas_Jugador1.SetActive(true);
                 _Canvas_Jugador2.SetActive(false);
                 Debug.Log("Activate Control De Jugador 1");
+                
             }
         }
 
