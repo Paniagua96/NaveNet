@@ -23,7 +23,7 @@ public class PlayerController_J1 : NetworkBehaviour
     public int maxHealth;
     public int maxBullets;
     private int currentBullet;
-    public int currentHealth;
+    [SyncVar (hook = "OnChangeHealth")] public int currentHealth;
     public int timeReload;
 
     void Start()
@@ -86,7 +86,7 @@ public class PlayerController_J1 : NetworkBehaviour
 
         rb.velocity = VectorVelocity;
 
-        healthBar.value = currentHealth;
+        
         bulletBar.value = currentBullet;
 
         if (buttonFire.pulsado)
@@ -101,6 +101,11 @@ public class PlayerController_J1 : NetworkBehaviour
     {
         if (other.gameObject.CompareTag("Bala"))
         {
+            if (!isServer)
+            {
+                return;
+            }
+
             Destroy(other.gameObject);
             currentHealth--;
             if (currentHealth <= 0)
@@ -109,6 +114,11 @@ public class PlayerController_J1 : NetworkBehaviour
                 currentHealth = 0;
             }
         }
+    }
+
+    void OnChangeHealth(int health)
+    {
+        healthBar.value = health;
     }
 
     [Command]

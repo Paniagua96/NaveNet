@@ -22,7 +22,7 @@ public class PlayerController_J2 : NetworkBehaviour
     public int maxHealth;
     public int maxBullets;
     private int currentBullet;
-    public int currentHealth;
+    [SyncVar(hook = "OnChangeHealth")] public int currentHealth;
     public int timeReload;
 
 
@@ -100,8 +100,7 @@ public class PlayerController_J2 : NetworkBehaviour
         Vector3 VectorVelocity = Direction * speed;
 
         rb.velocity = VectorVelocity;
-
-        healthBar.value = currentHealth;
+        
         bulletBar.value = currentBullet;
 
         if (buttonFire.pulsado)
@@ -124,6 +123,11 @@ public class PlayerController_J2 : NetworkBehaviour
                 currentHealth = 0;
             }
         }
+    }
+
+    void OnChangeHealth(int health)
+    {
+        healthBar.value = health;
     }
 
     [Command]
