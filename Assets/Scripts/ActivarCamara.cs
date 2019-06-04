@@ -6,15 +6,16 @@ public class ActivarCamara : MonoBehaviour
 {
 
     public GameObject Cam;
-    public Vector3 PocicionDeCam;
-    public Vector3 RotacionDeCam;
+    public GameObject start;
 
     void Start()
     {
         Cam.SetActive(true);
         Cam.GetComponent<DesenparentarCamara>().player = gameObject.transform.parent.gameObject;
+        Vector3 temp = transform.parent.position;
+        Quaternion temporot = transform.parent.rotation;
         Cam.transform.parent = null;
-        Cam.transform.position = PocicionDeCam;
-        Cam.transform.Rotate(RotacionDeCam);
+        Cam.transform.position = temp;
+        Cam.transform.rotation = temporot;
     }
 }

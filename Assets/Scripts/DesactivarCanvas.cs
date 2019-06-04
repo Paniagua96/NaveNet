@@ -6,10 +6,7 @@ using UnityEngine.Networking;
 
 public class DesactivarCanvas : NetworkBehaviour
 {
-    private GameObject _Canvas_Jugador;
-    public GameObject _Canvas_Jugador1;
-    public GameObject _Canvas_Jugador2;
-    private GameObject ParentCamera;
+    //private GameObject ParentCamera;
     void Start()
     {
         
@@ -23,7 +20,7 @@ public class DesactivarCanvas : NetworkBehaviour
             this.transform.gameObject.tag = "Servidor";
         }
 
-        ParentCamera = GameObject.Find("CameraParent");
+        //ParentCamera = GameObject.Find("CameraParent");
     }
     void OnTriggerEnter(Collider other)
     {
@@ -32,10 +29,10 @@ public class DesactivarCanvas : NetworkBehaviour
             if (isLocalPlayer)
             {
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
-                this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
+                //GameObject cam = GameObject.FindGameObjectWithTag("Cam1");
+                //cam.SetActive(true);
                 //_Canvas_Jugador = _Canvas_Jugador1;
-                _Canvas_Jugador1.SetActive(true);
-                _Canvas_Jugador2.SetActive(false);
+                GameObject.FindGameObjectWithTag("Cam2").SetActive(false);
                 Debug.Log("Activate Control De Jugador 1");
                 
             }
@@ -45,11 +42,11 @@ public class DesactivarCanvas : NetworkBehaviour
         {
             if (isLocalPlayer)
             {
-                this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
-                this.gameObject.GetComponent<PlayerController_J1>().enabled = false;
+                this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
                 //CamaraDeJugador = _Canvas_Jugador2;
-                _Canvas_Jugador2.SetActive(true);
-                _Canvas_Jugador1.SetActive(false);
+                //GameObject cam = GameObject.FindGameObjectWithTag("Cam2");
+                //cam.SetActive(true);
+                GameObject.FindGameObjectWithTag("Cam1").SetActive(false);
                 Debug.Log("Activate Control De Jugador 2");
             }
         }

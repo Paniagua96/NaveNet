@@ -24,5 +24,15 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.name == "Colicion_J1")
+        {
+            speed = 20;
+        }
+
+        if (other.gameObject.name == "Colicion_J2")
+        {
+            speed = -20;
+        }
     }
 }
