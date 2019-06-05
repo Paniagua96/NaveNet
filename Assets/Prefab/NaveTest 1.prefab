@@ -1695,9 +1695,9 @@ MonoBehaviour:
   buttonUp: {fileID: 5894540387769588135}
   buttonFire: {fileID: 3815011418939440472}
   maxHealth: 100
-  maxBullets: 1
+  maxBullets: 10
   currentHealth: 100
-  timeReload: 2
+  timeReload: 3
 --- !u!114 &3234568545193554329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1722,9 +1722,9 @@ MonoBehaviour:
   buttonUp: {fileID: 795559960605494774}
   buttonFire: {fileID: 6356186920978005404}
   maxHealth: 100
-  maxBullets: 1
+  maxBullets: 10
   currentHealth: 100
-  timeReload: 2
+  timeReload: 3
   gameOver: 0
 --- !u!114 &4365412529629927634
 MonoBehaviour:
