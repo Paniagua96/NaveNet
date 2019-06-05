@@ -9,6 +9,8 @@ TagManager:
   - Cliente
   - Servidor
   - Bala
+  - P1
+  - P2
   layers:
   - Default
   - TransparentFX

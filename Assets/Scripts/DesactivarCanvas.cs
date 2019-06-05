@@ -14,14 +14,14 @@ public class DesactivarCanvas : NetworkBehaviour
     {
         
 
-        if (isLocalPlayer)
+       /* if (isLocalPlayer)
         {
             this.transform.gameObject.tag = "Cliente";
         }
         else
         {
             this.transform.gameObject.tag = "Servidor";
-        }
+        }*/
 
         ParentCamera = GameObject.Find("CameraParent");
     }
@@ -31,6 +31,8 @@ public class DesactivarCanvas : NetworkBehaviour
         {
             if (isLocalPlayer)
             {
+                this.transform.gameObject.tag = "P1";
+
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
                 this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
                 //_Canvas_Jugador = _Canvas_Jugador1;
@@ -45,6 +47,7 @@ public class DesactivarCanvas : NetworkBehaviour
         {
             if (isLocalPlayer)
             {
+                this.transform.gameObject.tag = "P2";
                 this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = false;
                 //CamaraDeJugador = _Canvas_Jugador2;
