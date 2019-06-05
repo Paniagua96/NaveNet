@@ -109,7 +109,7 @@ public class PlayerController_J2 : NetworkBehaviour
 
         if (buttonFire.pulsado && shoot)
         {
-            CmdCrearBala();
+            CmdCrearBala2();
         }
 
 
@@ -160,7 +160,7 @@ public class PlayerController_J2 : NetworkBehaviour
     }
 
     [Command]
-    void CmdCrearBala()
+    void CmdCrearBala2()
     {
         Debug.Log("disparo");
         if (currentBullet <= 0)

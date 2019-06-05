@@ -1697,9 +1697,11 @@ MonoBehaviour:
   buttonUp: {fileID: 5894540387769588135}
   buttonFire: {fileID: 3815011418939440472}
   waitTime: 0
-  maxHealth: 100
+  shoot: 0
+  maxHealth: 1000
   maxBullets: 10
-  currentHealth: 100
+  currentBullet: 0
+  currentHealth: 1000
   timeReload: 3
 --- !u!114 &3234568545193554329
 MonoBehaviour:
@@ -1726,9 +1728,10 @@ MonoBehaviour:
   buttonUp: {fileID: 795559960605494774}
   buttonFire: {fileID: 6356186920978005404}
   waitTime: 0
-  maxHealth: 100
+  maxHealth: 1000
   maxBullets: 10
-  currentHealth: 100
+  currentBullet: 0
+  currentHealth: 1000
   timeReload: 3
   gameOver: 0
 --- !u!114 &4365412529629927634
@@ -1966,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4698756057443036943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3310,7 +3313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7407486283800571013
 RectTransform:
   m_ObjectHideFlags: 0

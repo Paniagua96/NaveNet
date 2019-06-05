@@ -92,21 +92,21 @@ public class PlayerController_J1 : NetworkBehaviour
         
         bulletBar.value = currentBullet;
 
-        if (buttonFire.pulsado && shoot)
+        if (buttonFire.pulsado)
         {
             CmdCrearBala();
         }
 
-        if (!shoot)
-        {
-            waitTime -= Time.deltaTime;
-        }
+        //if (!shoot)
+        //{
+        //    waitTime -= Time.deltaTime;
+        //}
 
-        if (waitTime <= 0)
-        {
-            waitTime = 1;
-            shoot = true;
-        }
+        //if (waitTime <= 0)
+        //{
+        //    waitTime = 1;
+        //    shoot = true;
+        //}
         //if (currentBullet <= 0)
         //{
         //    waitTime += Time.deltaTime;
@@ -146,6 +146,7 @@ public class PlayerController_J1 : NetworkBehaviour
     [Command]
     void CmdCrearBala()
     {
+        Debug.Log("bala 1");
         if (currentBullet <= 0)
         {
             StartCoroutine(reloadBullets());
@@ -158,7 +159,7 @@ public class PlayerController_J1 : NetworkBehaviour
             //Bala.GetComponent<Rigidbody>().velocity = Bala.transform.up * BulletSpeed;
             NetworkServer.Spawn(Bala);
             //currentBullet--;
-            shoot = false;
+            //shoot = false;
         }
     }
 
