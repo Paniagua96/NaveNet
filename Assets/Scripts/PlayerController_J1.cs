@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 public class PlayerController_J1 : NetworkBehaviour
 {
+    public AudioSource laser;
     public Slider bulletBar;
     public Slider healthBar;
     public Rigidbody rb;
@@ -19,6 +20,7 @@ public class PlayerController_J1 : NetworkBehaviour
     public Interactive buttonDown;
     public Interactive buttonUp;
     public Interactive buttonFire;
+    private float waitTime;
 
     public int maxHealth;
     public int maxBullets;
@@ -91,9 +93,20 @@ public class PlayerController_J1 : NetworkBehaviour
 
         if (buttonFire.pulsado)
         {
+           
             CmdCrearBala();
         }
 
+        if (currentBullet <= 0)
+        {
+            waitTime += Time.deltaTime;
+        }
+
+        if (waitTime == timeReload)
+        {
+            currentBullet = maxBullets;
+            waitTime = 0;
+        }
 
     }
 
@@ -126,10 +139,11 @@ public class PlayerController_J1 : NetworkBehaviour
     {
         if (currentBullet <= 0)
         {
-            StartCoroutine(reloadBullets());
+           // StartCoroutine(reloadBullets());
         }
         else
         {
+            playLaser();
             GameObject Bala = (GameObject) Instantiate(bullet, Canon.position, bullet.transform.rotation);
             //Bala.GetComponent<Rigidbody>().velocity = Bala.transform.up * BulletSpeed;
             NetworkServer.Spawn(Bala);
@@ -137,14 +151,21 @@ public class PlayerController_J1 : NetworkBehaviour
         }
     }
 
-
-    public IEnumerator reloadBullets()
+    public void playLaser()
     {
-        yield return new WaitForSeconds(timeReload);
-
-            currentBullet = maxBullets;
-     
+        if (!laser.isPlaying)
+        {
+            laser.Play();
+            laser.loop = false;
+        }
     }
+    //public IEnumerator reloadBullets()
+    //{
+    //    yield return new WaitForSeconds(timeReload);
+
+    //        currentBullet = maxBullets;
+     
+    //}
 
     
    
