@@ -20,11 +20,12 @@ public class PlayerController_J1 : NetworkBehaviour
     public Interactive buttonDown;
     public Interactive buttonUp;
     public Interactive buttonFire;
-    public float waitTime;
+    public float waitTime = 1;
+    public bool shoot;
 
     public int maxHealth;
     public int maxBullets;
-    private int currentBullet;
+    public int currentBullet;
     [SyncVar (hook = "OnChangeHealth")] public int currentHealth;
     public int timeReload;
 
@@ -91,20 +92,31 @@ public class PlayerController_J1 : NetworkBehaviour
         
         bulletBar.value = currentBullet;
 
-        if (buttonFire.pulsado)
+        if (buttonFire.pulsado && shoot)
         {
             CmdCrearBala();
         }
 
-        if (currentBullet <= 0)
+        if (!shoot)
         {
-            currentBullet
+            waitTime -= Time.deltaTime;
         }
 
-        if (waitTime == timeReload)
+        if (waitTime <= 0)
         {
-            currentBullet = maxBullets;
+            waitTime = 1;
+            shoot = true;
         }
+        //if (currentBullet <= 0)
+        //{
+        //    waitTime += Time.deltaTime;
+        //}
+
+        //if (waitTime >= timeReload)
+        //{
+        //    currentBullet = maxBullets;
+        //    waitTime = 0;
+        //}
     }
 
     public void OnCollisionEnter(Collision other)
@@ -126,7 +138,7 @@ public class PlayerController_J1 : NetworkBehaviour
         }
     }
 
-    void OnChangeHealth(int health)
+    public void OnChangeHealth(int health)
     {
         healthBar.value = health;
     }
@@ -136,7 +148,7 @@ public class PlayerController_J1 : NetworkBehaviour
     {
         if (currentBullet <= 0)
         {
-            //StartCoroutine(reloadBullets());
+            StartCoroutine(reloadBullets());
         }
         else
         {
@@ -145,7 +157,8 @@ public class PlayerController_J1 : NetworkBehaviour
             GameObject Bala = (GameObject) Instantiate(bullet, Canon.position, bullet.transform.rotation);
             //Bala.GetComponent<Rigidbody>().velocity = Bala.transform.up * BulletSpeed;
             NetworkServer.Spawn(Bala);
-            currentBullet--;
+            //currentBullet--;
+            shoot = false;
         }
     }
 
@@ -158,13 +171,13 @@ public class PlayerController_J1 : NetworkBehaviour
         }
     }
 
-    //public IEnumerator reloadBullets()
-    //{
-    //    yield return new WaitForSeconds(timeReload);
+    public IEnumerator reloadBullets()
+    {
+        yield return new WaitForSeconds(timeReload);
 
-    //        currentBullet = maxBullets;
+        currentBullet = maxBullets;
 
-    //}
+    }
 
 
 

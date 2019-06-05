@@ -42,14 +42,18 @@ public class Win : MonoBehaviour
             {
                 Debug.Log("Win p2");
                 HP_static.winner = "dos";
-                SceneManager.LoadScene("Victory");
+                SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+                Destroy(player2);
+                Destroy(this);
             }
 
             if (playerController2.currentHealth <= 0)
             {
                 Debug.Log("Win p1");
-                SceneManager.LoadScene("Victory");
                 HP_static.winner = "uno";
+                SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+                Destroy(player1);
+                Destroy(this);
             }
         }
 
@@ -57,7 +61,7 @@ public class Win : MonoBehaviour
         {
             if (areTwo == true)
             {
-                SceneManager.LoadScene("Victory");
+                SceneManager.LoadScene("Defeat");
             }
         }
 

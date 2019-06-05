@@ -12,16 +12,16 @@ public class DesactivarCanvas : NetworkBehaviour
     private GameObject ParentCamera;
     void Start()
     {
-        
 
-       /* if (isLocalPlayer)
-        {
-            this.transform.gameObject.tag = "Cliente";
-        }
-        else
-        {
-            this.transform.gameObject.tag = "Servidor";
-        }*/
+
+        //if (isLocalPlayer)
+        //{
+        //    this.transform.gameObject.tag = "Cliente";
+        //}
+        //else
+        //{
+        //    this.transform.gameObject.tag = "Servidor";
+        //}
 
         ParentCamera = GameObject.Find("CameraParent");
     }
@@ -35,6 +35,7 @@ public class DesactivarCanvas : NetworkBehaviour
 
                 this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
                 this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
+                
                 //_Canvas_Jugador = _Canvas_Jugador1;
                 _Canvas_Jugador1.SetActive(true);
                 _Canvas_Jugador2.SetActive(false);
@@ -58,27 +59,23 @@ public class DesactivarCanvas : NetworkBehaviour
         }
     }
 
-    //void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.name == "Colicion_J1")
-    //    {
-    //        if (isLocalPlayer)
-    //        {
-    //            this.gameObject.GetComponent<PlayerController_J1>().enabled = true;
-    //            this.gameObject.GetComponent<PlayerController_J2>().enabled = false;
-    //            //_Canvas_Jugador = _Canvas_Jugador1;
-    //        }
-    //    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "Colicion_J1")
+        {
+            this.transform.gameObject.tag = "P1";
+            gameObject.GetComponent<PlayerController_J1>()
+                .OnChangeHealth(gameObject.GetComponent<PlayerController_J1>().currentHealth);
+            Destroy(this);
+        }
 
-    //    else if (other.gameObject.name == "Colicion_J1")
-    //    {
-    //        if (isLocalPlayer)
-    //        {
-    //            this.gameObject.GetComponent<PlayerController_J2>().enabled = true;
-    //            this.gameObject.GetComponent<PlayerController_J1>().enabled = false;
-    //            //CamaraDeJugador = _Canvas_Jugador2;
-    //        }
-    //    }
-    //}
+        else if (other.gameObject.name == "Colicion_J2")
+        {
+            this.transform.gameObject.tag = "P2";
+            gameObject.GetComponent<PlayerController_J2>()
+                .OnChangeHealth(gameObject.GetComponent<PlayerController_J2>().currentHealth);
+            Destroy(this);
+        }
+    }
 
 }
